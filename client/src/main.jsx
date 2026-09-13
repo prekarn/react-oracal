@@ -9,6 +9,7 @@ import Home from "./Home";
 import Employee from "./Employee";
 import Customer from "./Customer";
 import Login from "./Login";
+import Product from "./Product";
 import ProtectedRoute from "./ProtectedRoute"; // 1. นำเข้า ProtectedRoute
 
 const router = createBrowserRouter([
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
     // 4. (Optional) ดักจับ URL ที่ไม่มีอยู่จริง ให้เด้งไปหน้า /login
     path: "*",
     element: <Navigate to="/login" replace />,
+  },
+  {
+    path: "/product",
+    element: (
+      <ProtectedRoute requiredPermIndex={2}>
+        <Product />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
